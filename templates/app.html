@@ -1,20 +1,65 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<link rel="stylesheet" href="{{url_for('static', filename= 'css/main.css')}}">
+<title>Masked face recognition</title>
 
-{% block bodyblock %}
+</head>
+<body style="background-color: rgb(127, 255, 212);">
 
-<div class="container">
+    <div class = "container" align = "center" style = "position:relative; top:100px;">
+        <br><br>
+        <h1 class = "content" Style = "color:rgb(255, 0, 234);">Masked face recognition application</h1>
+
+    </div>
     <br><br>
-    <h3 class="display-8">Face Recognition Application</h3>
+    <br>
+    <!--<div align="center">
+        <a class="btn btn-primary" href="#" style= "background-color:rgb(11, 14, 212);position:relative; top:200px;right:100px">Train</a>
+    </div>
+    <div align="center">
+        <a class="btn btn-primary" href="#" style= "background-color:rgb(11, 14, 212);position:relative; top:165px;left:100px">Test Image</a>
+    </div>
+</div>-->
+<div align="center">
+   <!-- <a class="btn btn-primary" href="#" style= "background-color:rgb(11, 14, 212);position:relative; top:170px;left:330px">Start recognition</a>
+</div>-->
+
+    <div class = "container"align = "center" style = "position:relative; top:115px; right:40px; color:rgb(11, 14, 212)">
+        <br>
+        <form action="#" method="post" enctype="multipart/form-data" >
+            <label for="upload" >Upload image to recognize</label>
+            <input type="file" id="upload" name="image" required="true">
+            <input type="submit" value="upload & recognize" >
+        </form>
+    </div>
+
+    {% if fileupload  %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6" id="predict" style = "position:relative; top:160px; left:110px">
+                <img src="{{ url_for('static',filename='uploads/')}}{{ imageName }}" alt="" width="{{ w }}" height="250" >
+                <p style="color:rgb(255, 0, 234) ">Uploaded image </P>
+            </div>
+            <div class="col-md-6" id="predict" style = "position:relative; top:160px; right:80px">
+                <img src="{{ url_for('static',filename='predict/')}}{{ imageName }}" alt="" width="{{ w }}" height="250">
+                <p style="color:rgb(255, 0, 234) ">Results </P>
+            </div>
+
+        </div>
+    </div>
     
-    <p>
-        Gender Classification: This app is driven by data and machine learning model.
-            As soon as user upload the image, in background it convert into grayscale, crop face, convert into eigen image and 
-            finally it model to predict. All this functionality dumped in the flask app.
-    </p>
-    <img src="/static/images/002.PNG" class="image-fluid" width="600" alt="">
+    <footer class = "footer">
+        <div class = "container">
 
-    <a class="btn btn-outline-primary" href="/app/gender/">Gender App</a>
-
-</div>
-
-{% endblock %}
+        </div>   
+    </footer>
+</body>
+</html>
+    {% endif %} 
