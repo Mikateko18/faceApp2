@@ -9,9 +9,11 @@ from cv2 import threshold
 import numpy as np
 from numpy import linalg as la
 from pylab import *
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
 
-def faceApp():
+def index():
+    return render_template('index.html')
+def app():
     
     if request.method == "POST":
         f = request.files['image']
@@ -22,10 +24,10 @@ def faceApp():
         #grayImage= np.zeros_like(f)
         
 
-        return render_template('faceApp.html',fileupload=True,imageName=filename, w=w)
+        return render_template('app.html',fileupload=True,imageName=filename, w=w)
 
 
-    return render_template('faceApp.html',fileupload=False,imageName="002.jpeg")
+    return render_template('app.html',fileupload=False,imageName="002.jpeg")
 
 training_images_directory = "static/uploads"
 images = os.listdir(training_images_directory)
